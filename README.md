@@ -41,6 +41,15 @@ const arr4 = new AwaitableArray(...[1, 2, 3]);
 
 const padding = 10;
 await arr4.untilLength(3, padding);  // Waits 10ms
+
+// Timeout Error
+const arr5 = new AwaitableArray(...[1, 2]);
+
+try {
+  await arr5.untilLength(30, 0, 1000);  // Throws Promise.TimeoutError after 1 second
+} catch (e) {
+  console.log(e); // Promise.TimeoutError (see http://bluebirdjs.com/docs/api/timeout.html)
+}
 ```
 
 ### Notes
