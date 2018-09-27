@@ -25,9 +25,22 @@ let arrExisting = [ 1, 2, 3, 4 ];
 let arr2 = new AwaitableArray(...arrExisting);
 
 // Resolves Immediately
-await arr.untilLength(4);
+await arr2.untilLength(4);
 
 console.log(arr); // [ 1, 2, 3, 4 ]
+
+// Can also pass in a padding (wait at LEAST this time) and a Timeout
+let arr3 = new AwaitableArray();
+
+const padding = 10;
+const timeout = 50;   // Defaults to 2000ms
+await arr3.untilLength(100, padding, timeout);  // Waits 50ms
+
+// Wait at LEAST 10ms
+const arr4 = new AwaitableArray(...[1, 2, 3]);
+
+const padding = 10;
+await arr4.untilLength(3, padding);  // Waits 10ms
 ```
 
 ### Notes

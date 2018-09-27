@@ -1,7 +1,7 @@
 {
-  "name": "awaitable_array",
-  "version": "1.0.0",
-  "description": "Create an Array that can be Awaited",
+  "name": "awaitable-array",
+  "version": "1.0.1",
+  "description": "Create an array that can be awaited for a specific length",
   "main": "index.js",
   "scripts": {
     "test": "./node_modules/mocha/bin/_mocha test/array.test.js -R spec"
