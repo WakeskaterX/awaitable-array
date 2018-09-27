@@ -1,0 +1,27 @@
+{
+  "name": "awaitable_array",
+  "version": "1.0.0",
+  "description": "Create an Array that can be Awaited",
+  "main": "index.js",
+  "scripts": {
+    "test": "./node_modules/mocha/bin/_mocha test/array.test.js -R spec"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@personal:WakeskaterX/awaitable_array"
+  },
+  "keywords": [
+    "array",
+    "tooling",
+    "awaitable"
+  ],
+  "author": "Jason Carter & Andrew Powers",
+  "license": "MIT",
+  "dependencies": {
+    "bluebird": "^3.5.2"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^5.2.0"
+  }
+}
