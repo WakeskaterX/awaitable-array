@@ -19,4 +19,15 @@ describe('AwaitableArray', () => {
 
     expect(arr).to.deep.equal([ 1, 2, 3, 4 ]);
   });
+
+  it('should wait until a condition is met', async () => {
+    let arr = new AwaitableArray();
+
+    let i = 0;
+    let interval = setInterval(() => arr.push(++i), 5);
+
+    await arr.untilCondition(a => a.includes(5), 0, 2000);
+    expect(arr).to.have.lengthOf(5);
+    clearInterval(interval);
+  });
 });

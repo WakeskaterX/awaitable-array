@@ -4,8 +4,10 @@ Utility Library for Creating Arrays that can be awaited
 Uses:
 * Writing efficient test cases
 
-### Usage
+## Usage
 
+
+### Waiting for Length
 ```javascript
 const AwaitableArray = require('awaitable-array');
 
@@ -17,8 +19,26 @@ setTimeout(() => arr.push(5), 500);
 await arr.untilLength(1);
 
 console.log(arr);  // [ 5 ]
+```
 
-// Create array from existing array
+### Waiting for a Condition
+```javascript
+const AwaitableArray = require('awaitable-array');
+
+// Wait until something is pushed to the array
+let arr = new AwaitableArray();
+
+let i = 0;
+setTimeout(() => arr.push(++i), 500);
+
+await arr.untilCondition(arrayInstance => arrayInstance.includes(5));
+
+console.log(arr);  // [ 1, 2, 3, 4, 5 ]
+```
+
+### Create From Existing
+```javascript
+const AwaitableArray = require('awaitable-array');
 let arrExisting = [ 1, 2, 3, 4 ];
 
 // Use the spread operator to expand the array to create a new AwaitableArray
@@ -28,7 +48,11 @@ let arr2 = new AwaitableArray(...arrExisting);
 await arr2.untilLength(4);
 
 console.log(arr); // [ 1, 2, 3, 4 ]
+```
 
+### Padding Response Time
+```javascript
+const AwaitableArray = require('awaitable-array');
 // Can also pass in a padding (wait at LEAST this time) and a Timeout
 let arr3 = new AwaitableArray();
 
@@ -41,7 +65,10 @@ const arr4 = new AwaitableArray(...[1, 2, 3]);
 
 const padding = 10;
 await arr4.untilLength(3, padding);  // Waits 10ms
+```
 
+### Timeout Errors
+```javascript
 // Timeout Error
 const arr5 = new AwaitableArray(...[1, 2]);
 
