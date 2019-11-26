@@ -29,11 +29,14 @@ const AwaitableArray = require('awaitable-array');
 let arr = new AwaitableArray();
 
 let i = 0;
-setTimeout(() => arr.push(++i), 500);
+let interval = setInterval(() => arr.push(++i), 500);
 
+// after 2500 ms
 await arr.untilCondition(arrayInstance => arrayInstance.includes(5));
 
 console.log(arr);  // [ 1, 2, 3, 4, 5 ]
+
+clearInterval(interval);
 ```
 
 ### Create From Existing
@@ -44,7 +47,7 @@ let arrExisting = [ 1, 2, 3, 4 ];
 // Use the spread operator to expand the array to create a new AwaitableArray
 let arr2 = new AwaitableArray(...arrExisting);
 
-// Resolves Immediately
+// Resolves Immediately (next tick)
 await arr2.untilLength(4);
 
 console.log(arr); // [ 1, 2, 3, 4 ]
