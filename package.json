@@ -6,6 +6,7 @@
   "scripts": {
     "test": "./node_modules/mocha/bin/_mocha test/array.test.js -R spec"
   },
+  "types": "index.d.ts",
   "repository": {
     "type": "git",
     "url": "git@personal:WakeskaterX/awaitable_array"
